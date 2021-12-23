@@ -28,8 +28,10 @@ jobs:
       # Installing Repo (a Google-built repository-management tool that runs on top of Git)
       - name: Installing Repo
         run: |
-          sudo apt-get update
-          sudo apt-get install repo -y
+          export REPO=$(mktemp /tmp/repo.XXXXXXXXX)
+          curl -o ${REPO} https://storage.googleapis.com/git-repo-downloads/repo
+          gpg --recv-key 8BB9AD793E8E6153AF0F9A4416530D5E920F5C65
+          curl -s https://storage.googleapis.com/git-repo-downloads/repo.asc | gpg --verify - ${REPO} && install -m 755 ${REPO} ~/bin/repo
           repo version
 
       # Initializing a Repo client
