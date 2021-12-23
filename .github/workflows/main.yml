@@ -28,7 +28,8 @@ jobs:
       # Installing Repo (a Google-built repository-management tool that runs on top of Git)
       - name: Installing Repo
         run: |
-          sudo apt-get install repo
+          sudo apt-get update
+          sudo apt-get install repo -y
           repo version
 
       # Initializing a Repo client
