@@ -45,6 +45,7 @@ jobs:
           git config --global user.name nguoianphu
           git config --global user.email nguoianphu@gmail.com
           repo init -u https://android.googlesource.com/platform/manifest -b master --partial-clone --clone-filter=blob:limit=10M --depth 1 --no-clone-bundle --current-branch --no-tags
-          repo sync -j8 -d -c -q --force-sync --no-tags --no-clone-bundle
+          du -sh .
+          repo sync -j8 -d -c --force-sync --no-tags --no-clone-bundle
           
           
